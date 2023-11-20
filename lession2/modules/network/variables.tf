@@ -10,6 +10,12 @@ variable "aws_public_subnets" {
   }))
 }
 
+variable "aws_private_subnets" {
+  type = list(object({
+    id = string
+  }))
+}
+
 variable "username" {
   type = string
 }

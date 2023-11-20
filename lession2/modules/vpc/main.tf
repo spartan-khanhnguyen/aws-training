@@ -6,7 +6,7 @@ resource "aws_vpc" "main" {
   }
 }
 
-resource "aws_subnet" "public-subnets" {
+resource "aws_subnet" "public_subnets" {
   count = var.number_of_subnet_per_az
   vpc_id = aws_vpc.main.id
   availability_zone = var.availability_zones[count.index]
@@ -17,7 +17,7 @@ resource "aws_subnet" "public-subnets" {
   }
 }
 
-resource "aws_subnet" "private-subnets" {
+resource "aws_subnet" "private_subnets" {
   count = var.number_of_subnet_per_az
   vpc_id = aws_vpc.main.id
   availability_zone = var.availability_zones[count.index]
