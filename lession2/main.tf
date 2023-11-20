@@ -12,3 +12,9 @@ module "network" {
   aws_private_subnets = module.vpc.aws_private_subnets
   username = var.username
 }
+
+module "security-group" {
+  source = "./modules/security-group"
+  aws_vpc = module.vpc.aws_vpc
+  username = var.username
+}
