@@ -23,3 +23,7 @@ variable "username" {
 variable "number_of_subnet_per_az" {
   type = number
 }
+
+variable "router_table_cidr_block" {
+  type = string
+}

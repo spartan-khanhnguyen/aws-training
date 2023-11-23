@@ -1,11 +1,11 @@
 resource "aws_route_table" "public_subnets" {
   vpc_id = var.aws_vpc.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = var.router_table_cidr_block
     gateway_id = aws_internet_gateway.main.id
   }
   tags = {
-    Name = "${var.username}-public-rt"
+    Name     = "${var.username}-public-rt"
     Username = var.username
   }
 }
@@ -19,11 +19,11 @@ resource "aws_route_table_association" "public_subnet_association" {
 resource "aws_route_table" "private_subnets" {
   vpc_id = var.aws_vpc.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = var.router_table_cidr_block
     nat_gateway_id = aws_nat_gateway.main.id
   }
   tags = {
-    Name = "${var.username}-private-rt"
+    Name     = "${var.username}-private-rt"
     Username = var.username
   }
 }

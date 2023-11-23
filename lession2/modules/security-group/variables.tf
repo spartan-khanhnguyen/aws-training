@@ -8,7 +8,18 @@ variable "username" {
   type = string
 }
 
-variable allow_external_ports {
-  type = list(number)
-  default = [80, 22, 443]
+variable "allowed_inbounds" {
+  type = list(object({
+    port        = string
+    protocol    = string
+    cidr_blocks = list(string)
+  }))
+}
+
+variable "allowed_outbounds" {
+  type = list(object({
+    port        = string
+    protocol    = string
+    cidr_blocks = list(string)
+  }))
 }
