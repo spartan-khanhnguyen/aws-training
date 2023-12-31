@@ -1,14 +1,13 @@
-resource "aws_security_group" "private_sg" {
+resource "aws_security_group" "private_sg_main" {
   vpc_id = var.aws_vpc.id
-  name   = "${var.username}-sg"
-
+  name   = "${var.aws_config.aws_username}-sg"
   tags = {
-    Name     = "${var.username}-private-sg"
-    Username = var.username
+    Name     = "${var.aws_config.aws_username}-sg"
+    Username = var.aws_config.aws_username
   }
 
   dynamic "egress" {
-    for_each = var.allowed_outbounds
+    for_each = var.security_group_config.allowed_outbounds
     content {
       from_port   = egress.value.port
       to_port     = egress.value.port
@@ -18,7 +17,7 @@ resource "aws_security_group" "private_sg" {
   }
 
   dynamic "ingress" {
-    for_each = var.allowed_inbounds
+    for_each = var.security_group_config.allowed_inbounds
     content {
       from_port   = ingress.value.port
       to_port     = ingress.value.port
