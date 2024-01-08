@@ -38,6 +38,12 @@ variable "aws_igw" {
   })
 }
 
+variable "aws_nat" {
+  type = object({
+    id = string
+  })
+}
+
 variable "aws_public_subnets" {
   type = list(object({
     id = string

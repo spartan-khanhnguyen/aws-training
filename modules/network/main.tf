@@ -27,6 +27,7 @@ module "route-table" {
   aws_vpc             = module.vpc.aws_vpc
   route_table_config  = var.route_table_config
   aws_igw             = module.internet_gateway.aws_igw
+  aws_nat             = module.nat_gateway.aws_nat
   aws_public_subnets  = module.vpc.aws_public_subnets
   aws_private_subnets = module.vpc.aws_private_subnets
 }

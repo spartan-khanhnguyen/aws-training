@@ -19,8 +19,8 @@ resource "aws_route_table_association" "rt_public_subnets_association_main" {
 resource "aws_route_table" "rt_private_subnets_main" {
   vpc_id = var.aws_vpc.id
   route {
-    cidr_block = var.route_table_config.route_table_cidr_block
-    gateway_id = var.aws_igw.id
+    cidr_block     = var.route_table_config.route_table_cidr_block
+    nat_gateway_id = var.aws_nat.id
   }
   tags = {
     Name     = "${var.aws_config.aws_username}-private-rt"
